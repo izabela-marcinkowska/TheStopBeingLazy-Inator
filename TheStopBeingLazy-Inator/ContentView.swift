@@ -17,8 +17,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(habits.habits) { habit in
-                NavigationLink(destination: DetailView(habit: habit)) {
+            List($habits.habits) { $habit in
+                NavigationLink(destination: DetailView(habit: $habit)) {
                     Text(habit.name)
                 }
             }
@@ -28,7 +28,6 @@ struct ContentView: View {
                     isPresentingAddHabit = true
                 } label: {
                     Image(systemName: "plus")
-                        .font(.title)
                 }
             }
         }

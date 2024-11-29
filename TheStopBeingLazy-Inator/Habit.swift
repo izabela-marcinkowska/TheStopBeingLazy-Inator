@@ -12,6 +12,10 @@ struct Habit: Identifiable {
     var name: String
     var description: String
     var count: Int
+    
+    mutating func didIt () {
+        count += 1
+    }
 }
 
 
