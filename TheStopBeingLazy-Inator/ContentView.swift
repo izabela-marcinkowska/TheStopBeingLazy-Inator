@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+    }
     @State var habits = Habits()
     var body: some View {
-        List(habits.habits) {
-            Text($0.name)
+        NavigationStack {
+            List(habits.habits) {
+                Text($0.name)
+            }
+            .navigationTitle("The Stop Being Lazy-inator")
         }
     }
 }
