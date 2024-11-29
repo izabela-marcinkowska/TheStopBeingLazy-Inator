@@ -17,8 +17,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(habits.habits) {
-                Text($0.name)
+            List(habits.habits) { habit in
+                NavigationLink(destination: DetailView(habit: habit)) {
+                    Text(habit.name)
+                }
             }
             .navigationTitle("The Stop Being Lazy-inator")
             .toolbar{

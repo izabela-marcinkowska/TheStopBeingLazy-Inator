@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		17E871D32CF9BBA2004B690F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871D22CF9BBA2004B690F /* DetailView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		17E871D22CF9BBA2004B690F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		17FD10912CF8990D0007317F /* TheStopBeingLazy-Inator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TheStopBeingLazy-Inator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		17FD10882CF8990D0007317F = {
 			isa = PBXGroup;
 			children = (
+				17E871D22CF9BBA2004B690F /* DetailView.swift */,
 				17FD10932CF8990D0007317F /* TheStopBeingLazy-Inator */,
 				17FD10922CF8990D0007317F /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E871D32CF9BBA2004B690F /* DetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
