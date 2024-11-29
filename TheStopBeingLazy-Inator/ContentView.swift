@@ -13,6 +13,8 @@ struct ContentView: View {
     }
     
     @StateObject var habits = Habits()
+    @State var isPresentingAddHabit: Bool = false
+    
     var body: some View {
         NavigationStack {
             List(habits.habits) {
@@ -21,12 +23,15 @@ struct ContentView: View {
             .navigationTitle("The Stop Being Lazy-inator")
             .toolbar{
                 Button {
-                    
+                    isPresentingAddHabit = true
                 } label: {
                     Image(systemName: "plus")
                         .font(.title)
                 }
             }
+        }
+        .sheet(isPresented: $isPresentingAddHabit) {
+            AddHabitView(habits: habits)
         }
     }
 }
