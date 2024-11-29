@@ -30,21 +30,18 @@ struct DetailView: View {
                 .italic()
             Spacer()
             VStack {
-                
-            Text("Current Streak:")
-                .font(.title)
-                .padding()
-            Text(habit.count, format: .number)
-                .font(.title)
-                .padding()
+                Text("Current Streak:")
+                    .font(.title)
+                    .padding()
+                Text(habit.count, format: .number)
+                    .font(.largeTitle)
+                    .padding()
             }
             Spacer()
-                
         }
         .navigationTitle(habit.name)
         .frame(maxWidth: .infinity, alignment: .center)
-        
-        
+        .background(.teal)
     }
 }
 
@@ -59,7 +56,7 @@ struct HabitDetailView_Previews: PreviewProvider {
 struct StatefulPreviewWrapper<Value, Content: View>: View {
     @State var value: Value
     var content: (Binding<Value>) -> Content
-
+    
     var body: some View {
         content($value)
     }
