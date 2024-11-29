@@ -14,6 +14,11 @@ struct Habit: Identifiable {
     var count: Int
 }
 
-class Habits {
-    var habits: [Habit] = []
+
+class Habits: ObservableObject {
+    @Published var habits: [Habit] = []
+    
+    func addNewHabit (habit: Habit) {
+        habits.append(habit)
+    }
 }
