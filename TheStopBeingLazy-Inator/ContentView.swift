@@ -17,10 +17,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List($habits.habits) { $habit in
-                NavigationLink(destination: DetailView(habit: $habit)) {
-                    Text(habit.name)
+            List {
+                ForEach($habits.habits) { $habit in
+                    
+                    NavigationLink(destination: DetailView(habit: $habit)) {
+                        Text(habit.name)
+                    }
                 }
+                .onDelete(perform: habits.deleteHabit)
             }
             .navigationTitle("The Stop Being Lazy-inator")
             .toolbar{

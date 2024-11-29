@@ -25,4 +25,8 @@ class Habits: ObservableObject {
     func addNewHabit (habit: Habit) {
         habits.append(habit)
     }
+    
+    func deleteHabit (at offset: IndexSet) {
+        habits.remove(atOffsets: offset)
+    }
 }
