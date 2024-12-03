@@ -33,7 +33,6 @@ struct DetailView: View {
             VStack {
                 Text("Current Streak:")
                     .font(.title)
-                    .padding()
                 Text(habit.count, format: .number)
                     .font(.largeTitle)
                     .padding()
