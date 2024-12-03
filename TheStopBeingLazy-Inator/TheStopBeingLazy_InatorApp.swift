@@ -12,6 +12,7 @@ struct TheStopBeingLazy_InatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: Habit.self)
         }
     }
 }

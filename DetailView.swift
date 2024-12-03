@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DetailView: View {
-    @Binding var habit : Habit
+    @Bindable var habit : Habit
     
     var body: some View {
         VStack {
             Spacer()
-            Text(habit.description)
+            Text(habit.details)
                 .font(.title2)
                 .italic()
             Spacer()
@@ -41,23 +42,19 @@ struct DetailView: View {
         }
         .navigationTitle(habit.name)
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(.teal)
     }
 }
 
-struct HabitDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatefulPreviewWrapper(value: Habit(id: UUID(), name: "Exercise", description: "I should exercise everyday.", count: 0)) { habit in
-            DetailView(habit: habit)
-        }
-    }
-}
-
-struct StatefulPreviewWrapper<Value, Content: View>: View {
-    @State var value: Value
-    var content: (Binding<Value>) -> Content
-    
-    var body: some View {
-        content($value)
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Habit.self, configurations: config)
+        
+        let example = Habit(id: UUID(), name: "Example", details: "Example details")
+        
+        return DetailView(habit: example)
+            .modelContainer(container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }

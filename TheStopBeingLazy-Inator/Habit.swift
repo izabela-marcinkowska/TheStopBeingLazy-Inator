@@ -6,23 +6,33 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Habit: Identifiable {
+@Model
+class Habit: Identifiable {
     var id: UUID
     var name: String
-    var description: String
+    var details: String
     var count: Int
     
-    mutating func didIt () {
+    init(id: UUID = UUID(), name: String, details: String, count: Int = 0) {
+            self.id = id
+            self.name = name
+            self.details = details
+            self.count = count
+        }
+    
+    func didIt () {
         count += 1
     }
 }
 
 
-class Habits: ObservableObject {
-    @Published var habits: [Habit] = []
+@Observable
+class HabitsMenager {
+    var habits: [Habit] = []
     
-    func addNewHabit (habit: Habit) {
+    func addNewHabit (_ habit: Habit) {
         habits.append(habit)
     }
     

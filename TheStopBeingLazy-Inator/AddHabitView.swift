@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddHabitView: View {
-    @ObservedObject var habits: Habits
     @Environment(\.dismiss) var dismiss
-    @State private var name: String = ""
-    @State private var description: String = ""
-
+    @Environment(\.modelContext) private var modelContext
+    
+    @State private var name = ""
+    @State private var details = ""
     
     var body: some View {
         Form {
             TextField("Habit Name", text: $name)
-            TextField("Description", text: $description)
+            TextField("Description", text: $details)
             
             Button("Add Habit") {
-                let newHabit = Habit(id: UUID(), name: name, description: description, count: 0)
-                habits.addNewHabit(habit: newHabit)
+                let newHabit = Habit(name: name, details: details)
+                modelContext.insert(newHabit)
                 dismiss()
             }
         }
@@ -29,5 +30,5 @@ struct AddHabitView: View {
 }
 
 #Preview {
-    AddHabitView(habits: Habits())
+    AddHabitView()
 }
